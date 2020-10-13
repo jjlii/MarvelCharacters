@@ -6,7 +6,7 @@ import com.example.core.data.series.SeriesList
 import com.example.core.data.story.StoryList
 import java.util.*
 
-data class CharacterDataContainer(
+data class Character(
     var id: Int?,
     var name: String?,
     var description: String?,
