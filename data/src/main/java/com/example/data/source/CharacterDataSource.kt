@@ -6,8 +6,8 @@ import com.example.domain.failure.Failure
 
 interface CharacterDataSource {
 
-    suspend fun getAllCharacters() : Either<Failure, List<Character>>
+    suspend fun getAllCharacters() : Either<Failure, List<Character>?>
 
-    suspend fun getCharacterById(characterId: Long) : Either<Failure, Character>
+    suspend fun getCharacterById(characterId: Long) : Either<Failure, Character?>
 
 }

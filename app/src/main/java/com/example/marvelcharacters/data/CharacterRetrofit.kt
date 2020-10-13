@@ -10,6 +10,6 @@ interface CharacterRetrofit {
     suspend fun getAllCharacters(): Response<CharacterResp>
 
     @GET("characters/{characterId}")
-    suspend fun getCharacterById(@Path("characterId")characterId: Int) : Response<CharacterResp>
+    suspend fun getCharacterById(@Path("characterId")characterId: Long) : Response<CharacterResp>
 
 }
