@@ -3,10 +3,11 @@ package com.example.marvelcharacters.data
 import com.example.data.source.CharacterDataSource
 import com.example.domain.Character
 import com.example.domain.Either
+import com.example.domain.failure.CharactersFailure
 import com.example.domain.failure.Failure
 import retrofit2.Response
 
-class CharacterDataSourceImp(private val characterRetrofit: CharacterRetrofit): CharacterDataSource {
+class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrofit): CharacterDataSource {
 
     override suspend fun getAllCharacters(): Either<Failure, List<Character>?> {
         return try {
@@ -18,9 +19,9 @@ class CharacterDataSourceImp(private val characterRetrofit: CharacterRetrofit): 
                     Either.Sucess(characterResp?.data)
                 }
                 409 ->
-                    Either.Failure(Failure.Conflict)
+                    Either.Failure(CharactersFailure.ConflictMessage(requestResp.message()))
                 else ->
-                    Either.Failure(Failure.ServerError)
+                    Either.Failure(CharactersFailure.NotFound)
             }
         }catch (e : Exception){
             Either.Failure(Failure.Unknown)
@@ -38,9 +39,9 @@ class CharacterDataSourceImp(private val characterRetrofit: CharacterRetrofit): 
                     Either.Sucess(characterResp?.data?.get(0))
                 }
                 404->
-                    Either.Failure(Failure.NotFound)
+                    Either.Failure(CharactersFailure.ConflictMessage(requestResp.message()))
                 else ->
-                    Either.Failure(Failure.ServerError)
+                    Either.Failure(CharactersFailure.NotFound)
             }
         }catch (e : Exception){
             Either.Failure(Failure.Unknown)

@@ -1,4 +1,9 @@
 package com.example.domain.failure
 
-class CharactersFailure {
+sealed class CharactersFailure : Failure.FeatureFailure(){
+
+
+    class ConflictMessage(val message: String): CharactersFailure()
+    object NotFound: CharactersFailure()
+
 }
