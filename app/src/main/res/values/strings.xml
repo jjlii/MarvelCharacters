@@ -10,7 +10,7 @@
     <string name="character_stories">Character stories</string>
     <string name="iron_man">Iron Man</string>
     <string name="n_comics">N. Comics:</string>
-    <string name="default_n_elements">1</string>
+    <string name="default_n_elements">0</string>
     <string name="events">Events</string>
     <string name="character_events">Character events</string>
     <string name="series">Series</string>
