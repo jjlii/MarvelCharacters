@@ -155,7 +155,7 @@
                 android:ellipsize="end"/>
 
             <TextView
-                android:id="@+id/lastUpdated"
+                android:id="@+id/last_updated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/n_series"
@@ -164,11 +164,11 @@
                 android:text="@string/last_updated" />
 
             <TextView
-                android:id="@+id/lastUpdatedValue"
+                android:id="@+id/last_updated_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/n_series"
-                app:layout_constraintStart_toEndOf="@id/lastUpdated"
+                app:layout_constraintStart_toEndOf="@id/last_updated"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:paddingStart="5dp"
                 android:text="@string/last_update_format"
