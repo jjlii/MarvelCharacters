@@ -16,7 +16,6 @@ class CustomInterceptor : Interceptor {
         val url = chain.request().url().newBuilder()
             .addQueryParameter("apikey", PUB_KEY)
             .addQueryParameter("hash",hash)
-            .addQueryParameter("ts", ts.toString())
             .build()
         val request = chain.request().newBuilder()
             .url(url)

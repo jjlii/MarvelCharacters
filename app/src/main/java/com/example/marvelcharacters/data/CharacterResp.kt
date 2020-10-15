@@ -1,9 +1,10 @@
 package com.example.marvelcharacters.data
 
-import com.example.domain.Character
+
+import com.example.domain.DataContainer
 
 data class CharacterResp(
     var code: Int?,
     var status: String?,
-    var data: List<Character>?
+    var data: DataContainer?
 )

@@ -37,9 +37,15 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
     private val characterListObserver = Observer<List<Character>?>{
         it?.let {
             characterListAdapter.updateCharactersList(it)
+            toast("Get it")
         }?: run{
             toast("The characters list is empty")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllCharacters()
     }
 
 

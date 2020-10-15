@@ -13,6 +13,5 @@ object Network {
         .build()
 
     private fun initOkHttpClient() = OkHttpClient.Builder()
-        .addInterceptor(CustomInterceptor())
         .build()
 }

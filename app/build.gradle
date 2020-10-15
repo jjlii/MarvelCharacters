@@ -9,6 +9,11 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.example.marvelcharacters"
         minSdkVersion 26
@@ -48,7 +53,8 @@ dependencies {
 
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.google.code.gson:gson:$gsonVersion"

@@ -17,6 +17,7 @@ class ListCharacterViewModel(application: Application,
 
     fun getAllCharacters(){
         getAllCharacterUseCase(Unit){
+            loadingLD.postValue(true)
             it.fold(
                 ::handleFailedGetAllCharacters,
                 ::handleSuccessGetAllCharacters
@@ -25,10 +26,12 @@ class ListCharacterViewModel(application: Application,
     }
 
     private fun handleFailedGetAllCharacters(failure: Failure)  {
+        loadingLD.postValue(false)
         failureLD.postValue(failure)
     }
 
     private fun handleSuccessGetAllCharacters(allCharacters: List<Character>?) {
+        loadingLD.postValue(false)
         charactersListLD.postValue(allCharacters)
     }
 

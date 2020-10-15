@@ -8,7 +8,7 @@ data class Character(
     var description: String?,
     var modified: Date?,
     var resourceURI: String?,
-    var urls: Url?,
+    var urls: List<Url>?,
     var thumbnail: Image?,
     var comicList: WorkList?,
     var stories: WorkList?,
