@@ -15,7 +15,11 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
 
     override fun getViewModel() = ListCharacterViewModel::class
 
-    private val characterListAdapter = CharactersListAdapter(arrayListOf())
+    private val characterListAdapter = CharactersListAdapter { characterId: Int? ->
+        elementClicked(characterId)
+    }
+
+    private var characterList = arrayListOf<Character>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,17 +40,23 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
 
     private val characterListObserver = Observer<List<Character>?>{
         it?.let {
-            characterListAdapter.updateCharactersList(it)
+            characterListAdapter.submitList(it)
             toast("Get it")
         }?: run{
             toast("The characters list is empty")
         }
     }
 
+    private fun elementClicked(characterId: Int?){
+        toast(characterId.toString())
+    }
+
     override fun onResume() {
         super.onResume()
         viewModel.getAllCharacters()
     }
+
+
 
 
 }
