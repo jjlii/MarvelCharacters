@@ -11,5 +11,6 @@ fun View.hideKeyboard(){
 }
 
 fun Image.getImage():String{
-    return "${this.path}.${this.extension}"
+    val newPath = this.path?.replace("http","https")
+    return "${newPath}.${this.extension}"
 }
