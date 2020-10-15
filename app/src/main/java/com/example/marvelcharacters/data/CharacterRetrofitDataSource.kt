@@ -28,6 +28,8 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                 }
                 409 ->
                     Either.Failure(CharactersFailure.ConflictMessage(requestResp.message()))
+                401->
+                    Either.Failure(CharactersFailure.Unauthorized)
                 else ->
                     Either.Failure(Failure.ServerError)
             }

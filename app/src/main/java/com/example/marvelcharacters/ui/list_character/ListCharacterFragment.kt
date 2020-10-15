@@ -5,6 +5,8 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.Character
+import com.example.domain.failure.CharactersFailure
+import com.example.domain.failure.Failure
 import com.example.marvelcharacters.R
 import com.example.marvelcharacters.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_list_character.*
@@ -36,6 +38,7 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
 
     private fun initObservable(){
         viewModel.charactersListLD.observe(viewLifecycleOwner,characterListObserver)
+        viewModel.failureLD.observe(viewLifecycleOwner,failureObserver)
     }
 
     private val characterListObserver = Observer<List<Character>?>{
@@ -44,6 +47,19 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
             toast("Get it")
         }?: run{
             toast("The characters list is empty")
+        }
+    }
+
+    private val failureObserver = Observer<Failure>{
+        when(it){
+            Failure.ServerError ->
+                toast("ServerError")
+            Failure.Unknown ->
+                toast("UnknownError")
+            is CharactersFailure.ConflictMessage ->
+                toast(it.message)
+            is CharactersFailure.Unauthorized->
+                toast("Unauthorized")
         }
     }
 
