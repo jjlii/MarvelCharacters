@@ -38,7 +38,7 @@ class CharactersListAdapter(private var characters: ArrayList<Character>): Recyc
                 n_comics_value.text = character.comicList?.items?.size.toString()
                 n_stories_value.text = character.stories?.items?.size.toString()
                 n_events_value.text = character.events?.items?.size.toString()
-                n_series_value.text = character.series?.item?.size.toString()
+                n_series_value.text = character.series?.items?.size.toString()
                 last_updated.text = sdf.format(resultDate)?: ""
                 Picasso.get().load(character.thumbnail?.getImage())
                     .placeholder(R.drawable.ic_android_black_24dp)

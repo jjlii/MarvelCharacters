@@ -1,6 +1,6 @@
-package com.example.core.data.story
+package com.example.domain
 
-data class StorySummary (
+data class WorkSummary (
     var resourceURI: String?,
     var name: String?,
     var type: String?
