@@ -8,13 +8,18 @@ import retrofit2.http.Query
 interface CharacterRetrofit {
 
     @GET("characters")
-    suspend fun getAllCharacters(@Query("ts")ts: Long,
-                                @Query("apikey")apikey: String,
-                                @Query("hash")hash:String,
-                                @Query("offset")offset: Int = 0,
-                                @Query("limit")limit: Int = 20): Response<CharacterResp>
+    suspend fun getAllCharacters(
+        @Query("ts")ts: Long,
+        @Query("apikey")apikey: String,
+        @Query("hash")hash:String,
+        @Query("offset")offset: Int = 0,
+        @Query("limit")limit: Int = 20): Response<CharacterResp>
 
     @GET("characters/{characterId}")
-    suspend fun getCharacterById(@Path("characterId")characterId: Long) : Response<CharacterResp>
+    suspend fun getCharacterById(
+        @Path("characterId")characterId: Long,
+        @Query("ts")ts: Long,
+        @Query("apikey")apikey: String,
+        @Query("hash")hash:String) : Response<CharacterResp>
 
 }

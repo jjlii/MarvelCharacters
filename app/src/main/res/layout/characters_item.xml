@@ -42,7 +42,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:padding="10dp"
-                android:scaleType="centerCrop"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,20 +50,20 @@
                 />
 
             <TextView
-                android:id="@+id/character_name"
+                android:id="@+id/character_name_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/character_photo"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textStyle="bold"
-                android:text="@string/character_name" />
+                android:text="@string/character_name_cover" />
 
             <TextView
                 android:id="@+id/character_name_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/character_name"
+                app:layout_constraintStart_toEndOf="@id/character_name_details"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:paddingStart="5dp"
                 android:text="@string/iron_man"
@@ -75,7 +74,7 @@
                 android:id="@+id/n_comics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/character_name"
+                app:layout_constraintTop_toBottomOf="@id/character_name_details"
                 app:layout_constraintStart_toEndOf="@id/character_photo"
                 android:textStyle="bold"
                 android:text="@string/n_comics" />

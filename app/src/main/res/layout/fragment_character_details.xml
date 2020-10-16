@@ -43,7 +43,7 @@
                 android:src="@drawable/ic_android_black_24dp"/>
 
             <TextView
-                android:id="@+id/character_name"
+                android:id="@+id/character_name_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@id/character_name"
+                app:layout_constraintStart_toStartOf="@id/character_name_details"
                 app:layout_constraintTop_toBottomOf="@id/gl2"
                 android:text="@string/description"
                 android:textStyle="bold"
@@ -80,11 +80,12 @@
 
             <TextView
                 android:id="@+id/description_value"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintTop_toBottomOf="@id/description"
                 app:layout_constraintStart_toStartOf="@id/description"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/character_description"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
@@ -94,9 +95,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@id/character_name"
+                app:layout_constraintStart_toStartOf="@id/character_name_details"
                 app:layout_constraintTop_toBottomOf="@id/description_value"
-                android:text="@string/comics"
+                android:text="@string/n_comics"
                 android:textStyle="bold"
                 android:textSize="24sp"/>
 
@@ -107,8 +108,7 @@
                 android:layout_marginTop="5dp"
                 app:layout_constraintTop_toBottomOf="@id/comics"
                 app:layout_constraintStart_toStartOf="@id/comics"
-                android:text="@string/character_comics"
-                android:textStyle="bold"
+                android:text="@string/n_comics"
                 android:textSize="18sp"/>
 
             <TextView
@@ -116,9 +116,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@id/character_name"
+                app:layout_constraintStart_toStartOf="@id/character_name_details"
                 app:layout_constraintTop_toBottomOf="@id/comic_value"
-                android:text="@string/stories"
+                android:text="@string/n_stories"
                 android:textStyle="bold"
                 android:textSize="24sp"/>
 
@@ -129,8 +129,7 @@
                 android:layout_marginTop="5dp"
                 app:layout_constraintTop_toBottomOf="@id/stories"
                 app:layout_constraintStart_toStartOf="@id/stories"
-                android:text="@string/character_stories"
-                android:textStyle="bold"
+                android:text="@string/n_stories"
                 android:textSize="18sp"/>
 
             <TextView
@@ -138,9 +137,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@id/character_name"
+                app:layout_constraintStart_toStartOf="@id/character_name_details"
                 app:layout_constraintTop_toBottomOf="@id/stories_value"
-                android:text="@string/events"
+                android:text="@string/n_events"
                 android:textStyle="bold"
                 android:textSize="24sp"/>
 
@@ -152,7 +151,6 @@
                 app:layout_constraintTop_toBottomOf="@id/events"
                 app:layout_constraintStart_toStartOf="@id/events"
                 android:text="@string/character_events"
-                android:textStyle="bold"
                 android:textSize="18sp"/>
 
             <TextView
@@ -160,9 +158,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="@id/character_name"
+                app:layout_constraintStart_toStartOf="@id/character_name_details"
                 app:layout_constraintTop_toBottomOf="@id/events_value"
-                android:text="@string/series"
+                android:text="@string/n_series"
                 android:textStyle="bold"
                 android:textSize="24sp"/>
 
@@ -174,7 +172,6 @@
                 app:layout_constraintTop_toBottomOf="@id/series"
                 app:layout_constraintStart_toStartOf="@id/series"
                 android:text="@string/character_series"
-                android:textStyle="bold"
                 android:textSize="18sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

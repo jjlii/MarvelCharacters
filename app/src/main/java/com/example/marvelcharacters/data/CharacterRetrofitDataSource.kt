@@ -1,5 +1,6 @@
 package com.example.marvelcharacters.data
 
+import android.util.Log
 import com.example.data.source.CharacterDataSource
 import com.example.domain.Character
 import com.example.domain.Constant
@@ -34,6 +35,7 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                     Either.Failure(Failure.ServerError)
             }
         }catch (e : Exception){
+            Log.e("getAllCharacters ->", e.message.toString())
             Either.Failure(Failure.Unknown)
         }
     }
@@ -41,7 +43,10 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
 
     override suspend fun getCharacterById(characterId: Long): Either<Failure, Character?> {
         return try {
-            val requestResp: Response<CharacterResp> = characterRetrofit.getCharacterById(characterId)
+            val ts = Date().time
+            val hash = getHash("${ts}${PV_KEY}${PUB_KEY}")
+            val requestResp: Response<CharacterResp> = characterRetrofit.getCharacterById(
+                characterId =  characterId, ts = ts, hash = hash,apikey = PUB_KEY)
 
             when(requestResp.code()){
                 200->{
@@ -50,10 +55,13 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                 }
                 404->
                     Either.Failure(CharactersFailure.NotFound)
+                401->
+                    Either.Failure(CharactersFailure.Unauthorized)
                 else ->
                     Either.Failure(Failure.ServerError)
             }
         }catch (e : Exception){
+            Log.e("getCharacterById ->", e.message.toString())
             Either.Failure(Failure.Unknown)
         }
     }

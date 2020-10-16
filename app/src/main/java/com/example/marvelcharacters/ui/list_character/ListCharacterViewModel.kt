@@ -7,17 +7,15 @@ import com.example.domain.failure.Failure
 import com.example.marvelcharacters.ui.base.BaseViewModel
 import com.example.usecase.GetAllCharacterUseCase
 
-class ListCharacterViewModel(application: Application,
-                             private val getAllCharacterUseCase: GetAllCharacterUseCase): BaseViewModel(application) {
+class ListCharacterViewModel(private val getAllCharacterUseCase: GetAllCharacterUseCase)
+    : BaseViewModel() {
 
 
     val charactersListLD = MutableLiveData<List<Character>?>()
 
-    val failureLD = MutableLiveData<Failure>()
-
     fun getAllCharacters(){
+        loadingLD.postValue(true)
         getAllCharacterUseCase(Unit){
-            loadingLD.postValue(true)
             it.fold(
                 ::handleFailedGetAllCharacters,
                 ::handleSuccessGetAllCharacters

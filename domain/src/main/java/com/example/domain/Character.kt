@@ -10,7 +10,7 @@ data class Character(
     var resourceURI: String?,
     var urls: List<Url>?,
     var thumbnail: Image?,
-    var comicList: WorkList?,
+    var comics: WorkList?,
     var stories: WorkList?,
     var events: WorkList?,
     var series: WorkList?

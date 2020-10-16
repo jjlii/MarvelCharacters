@@ -15,7 +15,7 @@ import com.example.marvelcharacters.getImage
 import kotlinx.android.synthetic.main.characters_item.view.*
 import java.text.SimpleDateFormat
 
-class CharactersListAdapter(private val clickListener: (Int?)-> Unit): ListAdapter<Character, CharactersListAdapter.CharactersViewHolder>(DiffCallback()) {
+class CharactersListAdapter(private val clickListener: (Int)-> Unit): ListAdapter<Character, CharactersListAdapter.CharactersViewHolder>(DiffCallback()) {
 
 
 
@@ -33,15 +33,14 @@ class CharactersListAdapter(private val clickListener: (Int?)-> Unit): ListAdapt
             with(itemView) {
                 val sdf = SimpleDateFormat("MMM dd yyyy")
                 val resultDate = character.modified
-                val img =  character.thumbnail?.getImage()
                 character_name_value.text = character.name
-                n_comics_value.text = character.comicList?.items?.size.toString()
-                n_stories_value.text = character.stories?.items?.size.toString()
-                n_events_value.text = character.events?.items?.size.toString()
-                n_series_value.text = character.series?.items?.size.toString()
+                n_comics_value.text = character.comics?.items?.size.toString()?: "0"
+                n_stories_value.text = character.stories?.items?.size.toString()?: "0"
+                n_events_value.text = character.events?.items?.size.toString()?: "0"
+                n_series_value.text = character.series?.items?.size.toString()?:"0"
                 last_updated_value.text = sdf.format(resultDate)?: ""
                 Glide.with(this)
-                    .load(img)
+                    .load(character.thumbnail?.getImage())
                     .placeholder(R.drawable.ic_android_black_24dp)
                     .apply(RequestOptions.overrideOf(600,600))
                     .skipMemoryCache(true)
@@ -49,7 +48,10 @@ class CharactersListAdapter(private val clickListener: (Int?)-> Unit): ListAdapt
                     .into(character_photo)
 
                 setOnClickListener{
-                    clickListener(character.id)
+                    character.id?.let {
+                        clickListener(it)
+                    }
+
                 }
             }
         }

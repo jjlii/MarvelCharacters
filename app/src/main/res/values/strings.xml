@@ -2,12 +2,9 @@
     <string name="app_name">Marvel Characters</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="character_name">Character Name</string>
+    <string name="character_name_cover">Character Name:</string>
     <string name="description">Description</string>
     <string name="character_description">Character description</string>
-    <string name="comics">Comics</string>
-    <string name="character_comics">Character comics</string>
-    <string name="stories">Stories</string>
-    <string name="character_stories">Character stories</string>
     <string name="iron_man">Iron Man</string>
     <string name="n_comics">N. Comics:</string>
     <string name="default_n_elements">0</string>

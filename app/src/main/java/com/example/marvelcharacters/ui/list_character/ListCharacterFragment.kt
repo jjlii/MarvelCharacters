@@ -3,6 +3,8 @@ package com.example.marvelcharacters.ui.list_character
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.Character
 import com.example.domain.failure.CharactersFailure
@@ -17,15 +19,21 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
 
     override fun getViewModel() = ListCharacterViewModel::class
 
-    private val characterListAdapter = CharactersListAdapter { characterId: Int? ->
+    private val characterListAdapter = CharactersListAdapter { characterId: Int ->
         elementClicked(characterId)
     }
 
     private var characterList = arrayListOf<Character>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getAllCharacters()
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         initObservable()
 
@@ -38,38 +46,20 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
 
     private fun initObservable(){
         viewModel.charactersListLD.observe(viewLifecycleOwner,characterListObserver)
-        viewModel.failureLD.observe(viewLifecycleOwner,failureObserver)
     }
 
     private val characterListObserver = Observer<List<Character>?>{
         it?.let {
             characterListAdapter.submitList(it)
-            toast("Get it")
         }?: run{
             toast("The characters list is empty")
         }
     }
 
-    private val failureObserver = Observer<Failure>{
-        when(it){
-            Failure.ServerError ->
-                toast("ServerError")
-            Failure.Unknown ->
-                toast("UnknownError")
-            is CharactersFailure.ConflictMessage ->
-                toast(it.message)
-            is CharactersFailure.Unauthorized->
-                toast("Unauthorized")
-        }
-    }
 
-    private fun elementClicked(characterId: Int?){
-        toast(characterId.toString())
-    }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.getAllCharacters()
+    private fun elementClicked(characterId: Int){
+        findNavController().navigate(ListCharacterFragmentDirections.actionListCharacterFragmentToCharacterDetailsFragment(characterId.toLong()))
     }
 
 
