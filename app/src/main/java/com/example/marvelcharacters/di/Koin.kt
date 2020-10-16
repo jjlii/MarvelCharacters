@@ -4,6 +4,7 @@ import com.example.data.source.CharacterDataSource
 import com.example.marvelcharacters.data.CharacterRetrofit
 import com.example.marvelcharacters.data.CharacterRetrofitDataSource
 import com.example.marvelcharacters.data.Network
+import com.example.marvelcharacters.ui.character_details.CharacterDetailsViewModel
 import com.example.marvelcharacters.ui.list_character.ListCharacterViewModel
 import com.example.usecase.GetAllCharacterUseCase
 import com.example.usecase.GetCharacterByIdUseCase
@@ -12,11 +13,12 @@ import org.koin.android.viewmodel.experimental.builder.viewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
-class Koin{
+object Koin{
 
     val appModule = module{
         single{ Network.initRetrofit().create(CharacterRetrofit::class.java) }
-        viewModel{ ListCharacterViewModel(androidApplication(), get())}
+        viewModel{ ListCharacterViewModel(get())}
+        viewModel { CharacterDetailsViewModel(get()) }
     }
 
     val dataModule = module{

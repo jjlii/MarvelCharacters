@@ -7,12 +7,11 @@ import org.koin.android.ext.android.startKoin
 class MainApplication : Application(){
     override fun onCreate() {
         super.onCreate()
-        val koin = Koin()
         startKoin(this,
         listOf(
-            koin.appModule,
-            koin.dataModule,
-            koin.usecasesModule
+            Koin.appModule,
+            Koin.dataModule,
+            Koin.usecasesModule
         ))
     }
 }
