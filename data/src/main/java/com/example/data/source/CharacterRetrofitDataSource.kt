@@ -34,10 +34,10 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                 401->
                     Either.Failure(CharactersFailure.Unauthorized)
                 else ->
-                    Either.Failure(Failure.ServerError)
+                    Either.Failure(Failure.ServerError(requestResp.code().toString()))
             }
         }catch (e : Exception){
-            Either.Failure(Failure.Unknown)
+            Either.Failure(Failure.Unknown(e.message.toString()))
         }
     }
 
@@ -59,10 +59,10 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                 401->
                     Either.Failure(CharactersFailure.Unauthorized)
                 else ->
-                    Either.Failure(Failure.ServerError)
+                    Either.Failure(Failure.ServerError(requestResp.code().toString()))
             }
         }catch (e : Exception){
-            Either.Failure(Failure.Unknown)
+            Either.Failure(Failure.Unknown(e.message.toString()))
         }
     }
 

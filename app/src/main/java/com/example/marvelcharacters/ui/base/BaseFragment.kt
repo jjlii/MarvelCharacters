@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,10 +48,12 @@ abstract class BaseFragment<VM: BaseViewModel>: Fragment() {
 
     private val failureObserver = Observer<Failure>{
         when(it){
-            Failure.ServerError ->
-                toast("ServerError")
-            Failure.Unknown ->
+            is Failure.ServerError ->
+                toast("ServerError with error code ${it.message}")
+            is Failure.Unknown ->{
                 toast("UnknownError")
+                Log.e("UnknownError", it.message)
+            }
             is CharactersFailure.ConflictMessage ->
                 toast(it.message)
             is CharactersFailure.NotFound->
