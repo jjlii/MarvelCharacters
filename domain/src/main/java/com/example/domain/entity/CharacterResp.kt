@@ -1,7 +1,5 @@
-package com.example.marvelcharacters.data
+package com.example.domain.entity
 
-
-import com.example.domain.DataContainer
 
 data class CharacterResp(
     var code: Int?,

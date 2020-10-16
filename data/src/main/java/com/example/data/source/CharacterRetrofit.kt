@@ -1,5 +1,6 @@
-package com.example.marvelcharacters.data
+package com.example.data.source
 
+import com.example.domain.entity.CharacterResp
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,6 +1,6 @@
-package com.example.marvelcharacters.data
+package com.example.data.source
 
-import com.example.domain.Constant.ConnectionUtils.BASE_URL
+import com.example.domain.entity.Constant.ConnectionUtils.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

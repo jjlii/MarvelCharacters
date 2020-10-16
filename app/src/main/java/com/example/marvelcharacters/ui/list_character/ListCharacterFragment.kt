@@ -3,12 +3,9 @@ package com.example.marvelcharacters.ui.list_character
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.domain.Character
-import com.example.domain.failure.CharactersFailure
-import com.example.domain.failure.Failure
+import com.example.domain.entity.Character
 import com.example.marvelcharacters.R
 import com.example.marvelcharacters.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_list_character.*
@@ -23,11 +20,13 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
         elementClicked(characterId)
     }
 
+    private var charactersList = arrayListOf<Character>()
+
     private var characterList = arrayListOf<Character>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getAllCharacters()
+        viewModel.getAllCharacters(0)
     }
 
 
@@ -50,7 +49,8 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
 
     private val characterListObserver = Observer<List<Character>?>{
         it?.let {
-            characterListAdapter.submitList(it)
+            characterList.addAll(it)
+            characterListAdapter.submitList(characterList)
         }?: run{
             toast("The characters list is empty")
         }

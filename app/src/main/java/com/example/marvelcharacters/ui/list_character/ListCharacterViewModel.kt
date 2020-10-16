@@ -1,8 +1,7 @@
 package com.example.marvelcharacters.ui.list_character
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.example.domain.Character
+import com.example.domain.entity.Character
 import com.example.domain.failure.Failure
 import com.example.marvelcharacters.ui.base.BaseViewModel
 import com.example.usecase.GetAllCharacterUseCase
@@ -13,9 +12,9 @@ class ListCharacterViewModel(private val getAllCharacterUseCase: GetAllCharacter
 
     val charactersListLD = MutableLiveData<List<Character>?>()
 
-    fun getAllCharacters(){
+    fun getAllCharacters(offset: Int){
         loadingLD.postValue(true)
-        getAllCharacterUseCase(Unit){
+        getAllCharacterUseCase(offset){
             it.fold(
                 ::handleFailedGetAllCharacters,
                 ::handleSuccessGetAllCharacters

@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.domain.Character
+import com.example.domain.entity.Character
 import com.example.marvelcharacters.R
 import com.example.marvelcharacters.getImage
 import kotlinx.android.synthetic.main.characters_item.view.*
 import java.text.SimpleDateFormat
+import java.util.*
 
 class CharactersListAdapter(private val clickListener: (Int)-> Unit): ListAdapter<Character, CharactersListAdapter.CharactersViewHolder>(DiffCallback()) {
 
@@ -32,13 +33,15 @@ class CharactersListAdapter(private val clickListener: (Int)-> Unit): ListAdapte
         fun bind(character: Character, clickListener: (Int)-> Unit){
             with(itemView) {
                 val sdf = SimpleDateFormat("MMM dd yyyy")
-                val resultDate = character.modified
+
                 character_name_value.text = character.name
-                n_comics_value.text = character.comics?.items?.size.toString()?: "0"
-                n_stories_value.text = character.stories?.items?.size.toString()?: "0"
-                n_events_value.text = character.events?.items?.size.toString()?: "0"
-                n_series_value.text = character.series?.items?.size.toString()?:"0"
-                last_updated_value.text = sdf.format(resultDate)?: ""
+                n_comics_value.text = character.comics?.items?.size.toString()
+                n_stories_value.text = character.stories?.items?.size.toString()
+                n_events_value.text = character.events?.items?.size.toString()
+                n_series_value.text = character.series?.items?.size.toString()
+                character.modified?.let {
+                    last_updated_value.text = sdf.format(it)
+                }
                 Glide.with(this)
                     .load(character.thumbnail?.getImage())
                     .placeholder(R.drawable.ic_android_black_24dp)

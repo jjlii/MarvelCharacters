@@ -53,6 +53,7 @@
                 android:text="@string/character_name"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="@color/colorWhite"
                 android:lines="1"
                 android:ellipsize="end"
                 android:elevation="1dp" />
@@ -65,7 +66,7 @@
                 app:layout_constraintBottom_toTopOf="@id/gl2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimary"/>
 
             <TextView
                 android:id="@+id/description"

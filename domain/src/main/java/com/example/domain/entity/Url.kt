@@ -1,4 +1,4 @@
-package com.example.domain
+package com.example.domain.entity
 
 data class Url (
     var type: String?,

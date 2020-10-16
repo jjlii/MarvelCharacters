@@ -1,11 +1,11 @@
-package com.example.marvelcharacters.data
+package com.example.data.source
 
-import android.util.Log
-import com.example.data.source.CharacterDataSource
-import com.example.domain.Character
-import com.example.domain.Constant
-import com.example.domain.Constant.ConnectionUtils.PUB_KEY
-import com.example.domain.Constant.ConnectionUtils.PV_KEY
+
+import com.example.domain.entity.Character
+import com.example.domain.CharacterDataSource
+import com.example.domain.entity.CharacterResp
+import com.example.domain.entity.Constant.ConnectionUtils.PUB_KEY
+import com.example.domain.entity.Constant.ConnectionUtils.PV_KEY
 import com.example.domain.Either
 import com.example.domain.failure.CharactersFailure
 import com.example.domain.failure.Failure
@@ -13,14 +13,16 @@ import retrofit2.Response
 import java.security.MessageDigest
 import java.util.*
 
-class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrofit): CharacterDataSource {
-
-    override suspend fun getAllCharacters(): Either<Failure, List<Character>?> {
+class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrofit):
+    CharacterDataSource {
+    override suspend fun getAllCharacters(offset: Int): Either<Failure, List<Character>?> {
         return try {
             val ts = Date().time
             val hash = getHash("${ts}${PV_KEY}${PUB_KEY}")
+            val limit = offset + 20
             val requestResp: Response<CharacterResp> =
-                characterRetrofit.getAllCharacters(ts = ts, hash = hash,apikey = PUB_KEY)
+                characterRetrofit.getAllCharacters(ts = ts, hash = hash,
+                    apikey = PUB_KEY,offset = offset,limit = limit)
 
             when (requestResp.code()){
                 200 -> {
@@ -35,7 +37,6 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                     Either.Failure(Failure.ServerError)
             }
         }catch (e : Exception){
-            Log.e("getAllCharacters ->", e.message.toString())
             Either.Failure(Failure.Unknown)
         }
     }
@@ -61,7 +62,6 @@ class CharacterRetrofitDataSource(private val characterRetrofit: CharacterRetrof
                     Either.Failure(Failure.ServerError)
             }
         }catch (e : Exception){
-            Log.e("getCharacterById ->", e.message.toString())
             Either.Failure(Failure.Unknown)
         }
     }

@@ -1,8 +1,7 @@
 package com.example.marvelcharacters.ui.character_details
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.example.domain.Character
+import com.example.domain.entity.Character
 import com.example.domain.failure.Failure
 import com.example.marvelcharacters.ui.base.BaseViewModel
 import com.example.usecase.GetCharacterByIdUseCase

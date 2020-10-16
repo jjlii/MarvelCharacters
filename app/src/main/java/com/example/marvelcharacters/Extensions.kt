@@ -1,7 +1,7 @@
 package com.example.marvelcharacters
 
 
-import com.example.domain.Image
+import com.example.domain.entity.Image
 
 
 fun Image.getImage():String{
