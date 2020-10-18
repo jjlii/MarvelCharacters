@@ -5,12 +5,6 @@ import com.example.domain.entity.CharacterResp
 import com.example.domain.entity.DataContainer
 import java.util.*
 
-val mockedCharacterResp = CharacterResp(
-    200,
-    "OK",
-    null
-)
-
 val mockedCharacter: Character = Character(
     id = 1, name = "", description = "",
     modified = Date(), resourceURI = "",
@@ -25,3 +19,17 @@ val mockedCharacter: Character = Character(
 val mockedDataContainer = DataContainer(
     0, 1, 1,1, arrayListOf(mockedCharacter)
 )
+
+val mockedCharacterRespSuccess = CharacterResp(
+    200,
+    "OK",
+    mockedDataContainer
+)
+
+val mockedCharacterRespConflict = CharacterResp(
+    409,
+    "Conflict",
+    null
+)
+
+

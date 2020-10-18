@@ -7,7 +7,6 @@ import com.example.domain.test.mockedCharacter
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -36,7 +35,7 @@ class GetAllCharacterUseCaseTest{
     @Test
     fun `when calls GetAllCharacterUseCase should passed the offset and return success`() {
         runBlocking {
-            val offset: Int = 20
+            val offset: Int = 0
             val characters = listOf(mockedCharacter)
             val expResult = Either.Sucess(characters)
 

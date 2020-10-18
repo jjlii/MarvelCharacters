@@ -19,7 +19,6 @@ buildscript {
     ext.mockitoVersion = '2.2.0'
     ext.koinTestVersion = '2.1.1'
     ext.androidxTestVersion = '1.1.2'
-    ext.mockWebServerVersion = '4.4.0'
     ext.espressoVersion = '3.3.0'
     repositories {
         google()

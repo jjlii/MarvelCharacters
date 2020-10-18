@@ -73,9 +73,6 @@ dependencies {
     //Mockito test
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion"
 
-    //Mock Web Server
-    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
-
 
     //Unit test
     testImplementation "junit:junit:$junitVersion"

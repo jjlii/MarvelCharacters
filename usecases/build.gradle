@@ -5,8 +5,10 @@ dependencies {
     implementation project(":domain")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Mockito test
