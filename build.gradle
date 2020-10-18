@@ -19,7 +19,8 @@ buildscript {
     ext.mockitoVersion = '2.2.0'
     ext.koinTestVersion = '2.1.1'
     ext.androidxTestVersion = '1.1.2'
-    ext.espressoVersion = '3.3.0'
+    ext.archCoreTestVersion = '2.1.0'
+    ext.mockitoInlineVersion = '2.28.2'
     repositories {
         google()
         jcenter()

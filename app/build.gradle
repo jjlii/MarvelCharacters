@@ -73,6 +73,9 @@ dependencies {
     //Mockito test
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion"
 
+    //Mockito inline
+    testImplementation "org.mockito:mockito-inline:$mockitoInlineVersion"
+
 
     //Unit test
     testImplementation "junit:junit:$junitVersion"
@@ -81,8 +84,7 @@ dependencies {
     //Koin test
     testImplementation "org.koin:koin-test:$koinTestVersion"
 
-
-    //Espresso
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    //Arch Core
+    testImplementation "androidx.arch.core:core-testing:$archCoreTestVersion"
 
 }
