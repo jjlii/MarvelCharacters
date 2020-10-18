@@ -5,8 +5,8 @@ import com.example.domain.CharacterDataSource
 import com.example.domain.Either
 import com.example.domain.failure.Failure
 
-class GetCharacterByIdUseCase(private val characterDataSource: CharacterDataSource) : UseCase<Failure, Character?,Long>(){
+class GetCharacterByIdUseCase(private val characterDataSource: CharacterDataSource) {
 
-    override suspend fun run(params: Long): Either<Failure, Character?>
+     suspend fun invoke(params: Long): Either<Failure, Character?>
             = characterDataSource.getCharacterById(params)
 }

@@ -40,7 +40,7 @@ class GetCharacterByIdUseCaseTest{
 
             whenever(characterDataSource.getCharacterById(logCaptor.capture())).thenReturn(expResult)
 
-            val result = getCharacterByIdUseCase.run(characterId)
+            val result = getCharacterByIdUseCase.invoke(characterId)
 
             assertEquals(expResult, result)
             assertEquals(characterId, logCaptor.value)
@@ -54,7 +54,7 @@ class GetCharacterByIdUseCaseTest{
 
             whenever(characterDataSource.getCharacterById(any())).thenReturn(expResult)
 
-            val result = getCharacterByIdUseCase.run(any())
+            val result = getCharacterByIdUseCase.invoke(any())
 
             assertEquals(expResult, result)
         }

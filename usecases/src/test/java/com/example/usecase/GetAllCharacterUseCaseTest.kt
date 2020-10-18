@@ -41,7 +41,7 @@ class GetAllCharacterUseCaseTest{
 
             whenever(characterDataSource.getAllCharacters(intCaptor.capture())).thenReturn(expResult)
 
-            val result = getAllCharacterUseCase.run(offset)
+            val result = getAllCharacterUseCase.invoke(offset)
 
 
             assertEquals(intCaptor.value, offset)
@@ -56,7 +56,7 @@ class GetAllCharacterUseCaseTest{
 
             whenever(characterDataSource.getAllCharacters(any())).thenReturn(expResult)
 
-            val result = getAllCharacterUseCase.run(any())
+            val result = getAllCharacterUseCase.invoke(any())
 
 
 

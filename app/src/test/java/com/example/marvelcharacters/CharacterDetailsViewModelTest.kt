@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.domain.Either
 import com.example.domain.entity.Character
+import com.example.domain.failure.CharactersFailure
 import com.example.domain.failure.Failure
 import com.example.domain.test.mockedCharacter
 import com.example.marvelcharacters.ui.character_details.CharacterDetailsViewModel
@@ -54,7 +55,7 @@ class CharacterDetailsViewModelTest {
         runBlocking {
             val characterId= 1L
 
-            whenever(getCharacterByIdUseCase.run(longCaptor.capture())).thenReturn(Either.Sucess(
+            whenever(getCharacterByIdUseCase.invoke(longCaptor.capture())).thenReturn(Either.Sucess(
                 mockedCharacter))
             characterDetailsViewModel.characterLD.observeForever(characterObserver)
             characterDetailsViewModel.loadingLD.observeForever(loadingObserver)
@@ -71,9 +72,9 @@ class CharacterDetailsViewModelTest {
     fun `when calls getCharacterById should call getCharacterByIdUseCase and notify observer with failure`(){
         runBlocking {
             val characterId = 1L
-            val expResult = Failure.Unknown("")
+            val expResult = CharactersFailure.Unauthorized
 
-            whenever(getCharacterByIdUseCase.run(longCaptor.capture())).thenReturn(Either.Failure(Failure.Unknown("")))
+            whenever(getCharacterByIdUseCase.invoke(longCaptor.capture())).thenReturn(Either.Failure(CharactersFailure.Unauthorized))
             characterDetailsViewModel.failureLD.observeForever(failureObserver)
             characterDetailsViewModel.loadingLD.observeForever(loadingObserver)
 

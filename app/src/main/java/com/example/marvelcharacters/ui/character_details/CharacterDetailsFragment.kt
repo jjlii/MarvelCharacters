@@ -1,12 +1,15 @@
 package com.example.marvelcharacters.ui.character_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.domain.entity.Character
+import com.example.domain.failure.CharactersFailure
+import com.example.domain.failure.Failure
 import com.example.marvelcharacters.R
 import com.example.marvelcharacters.getImage
 import com.example.marvelcharacters.ui.base.BaseFragment

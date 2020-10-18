@@ -5,21 +5,24 @@ import com.example.domain.entity.Character
 import com.example.domain.failure.Failure
 import com.example.marvelcharacters.ui.base.BaseViewModel
 import com.example.usecase.GetAllCharacterUseCase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ListCharacterViewModel(private val getAllCharacterUseCase: GetAllCharacterUseCase)
     : BaseViewModel() {
-
-
     val charactersListLD = MutableLiveData<List<Character>?>()
 
     fun getAllCharacters(offset: Int){
         loadingLD.postValue(true)
-        getAllCharacterUseCase(offset){
-            it.fold(
+        coroutineScope.launch {
+            getAllCharacterUseCase.invoke(offset).fold(
                 ::handleFailedGetAllCharacters,
                 ::handleSuccessGetAllCharacters
             )
         }
+
     }
 
     private fun handleFailedGetAllCharacters(failure: Failure)  {
