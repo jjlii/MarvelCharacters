@@ -20,8 +20,6 @@ class ListCharacterFragment : BaseFragment<ListCharacterViewModel>() {
         elementClicked(characterId)
     }
 
-    private var charactersList = arrayListOf<Character>()
-
     private var characterList = arrayListOf<Character>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

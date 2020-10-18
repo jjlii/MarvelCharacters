@@ -1,13 +1,13 @@
 package com.example.data.source
 
-import com.example.domain.entity.Constant.ConnectionUtils.BASE_URL
+
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
-    fun initRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+    fun initRetrofit(base_url: String): Retrofit = Retrofit.Builder()
+        .baseUrl(base_url)
         .client(initOkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build()

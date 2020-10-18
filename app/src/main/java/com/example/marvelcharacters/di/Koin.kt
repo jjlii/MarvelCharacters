@@ -21,7 +21,7 @@ object Koin{
 
     val dataModule = module{
         single<CharacterDataSource>{CharacterRetrofitDataSource(get())}
-        single{ Network.initRetrofit().create(CharacterRetrofit::class.java) }
+        single{ Network.initRetrofit("https://gateway.marvel.com/v1/public/").create(CharacterRetrofit::class.java) }
     }
 
     val usecasesModule = module {
