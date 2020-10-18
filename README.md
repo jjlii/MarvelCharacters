@@ -20,13 +20,13 @@ class Constant {
 Principales librerías
 ======================== 
 
-- `[Kotlin](https://kotlinlang.org/)`
-- `[Retrofit](https://square.github.io/retrofit/)`
-- `[Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)`
-- `[Glide](https://github.com/bumptech/glide)`
-- `[Koin](https://insert-koin.io/)`
-- `[Mockito](https://site.mockito.org/)`
-- `[JUnit 4](https://junit.org/junit4/)`
+- [Kotlin](https://kotlinlang.org/)
+- [Retrofit](https://square.github.io/retrofit/)
+- [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
+- [Glide](https://github.com/bumptech/glide)
+- [Koin](https://insert-koin.io/)
+- [Mockito](https://site.mockito.org/)
+- [JUnit 4](https://junit.org/junit4/)
 
 Organización del Proyecto 
 ===========================
