@@ -1,11 +1,11 @@
 Marvel Characters
 ==================
 
-Este projecto es una aplicación Android para testear la API de Marvel (https://developer.marvel.com/docs)
+Este projecto es una aplicación Android para testear la [API de Marvel](https://developer.marvel.com/docs)
 
 Requisitos
 ================== 
-Antes de ejecutar el proyecto es necesario tener una clave pública y privada para poder usar la API, dichas claves los consigues registrandote en la página de la API(https://developer.marvel.com/account)
+Antes de ejecutar el proyecto es necesario tener una clave pública y privada para poder usar la API, dichas claves los consigues registrandote en [la página de la API](https://developer.marvel.com/account)
 
 Después de tener las claves es necesario sustituirlo en la clase constante.
 
