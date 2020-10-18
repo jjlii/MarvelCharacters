@@ -16,14 +16,17 @@ buildscript {
     ext.recyclerviewVersion= '1.1.0'
 
     ext.junitVersion = '4.13'
+    ext.mockitoVersion = '2.2.0'
+    ext.koinTestVersion = '2.1.1'
     ext.androidxTestVersion = '1.1.2'
+    ext.mockWebServerVersion = '4.4.0'
     ext.espressoVersion = '3.3.0'
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "com.android.tools.build:gradle:4.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
         // NOTE: Do not place your application dependencies here; they belong

@@ -67,12 +67,25 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
-
+    //Koin
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
 
+    //Mockito test
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoVersion"
 
+    //Mock Web Server
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServerVersion"
+
+
+    //Unit test
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxTestVersion"
+
+    //Koin test
+    testImplementation "org.koin:koin-test:$koinTestVersion"
+
+
+    //Espresso
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
 }
