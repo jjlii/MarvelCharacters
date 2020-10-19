@@ -2,7 +2,6 @@ package com.example.marvelcharacters
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.domain.CharacterDataSource
 import com.example.domain.Either
 import com.example.domain.entity.Character
 import com.example.domain.failure.CharactersFailure
@@ -18,8 +17,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mock
@@ -36,9 +33,6 @@ class ListCharacterViewModelTest {
 
     @Mock
     lateinit var listCharacterObserver: Observer<List<Character>?>
-
-    @Mock
-    lateinit var characterDataSource: CharacterDataSource
 
     @Mock
     lateinit var failureObserver: Observer<Failure>

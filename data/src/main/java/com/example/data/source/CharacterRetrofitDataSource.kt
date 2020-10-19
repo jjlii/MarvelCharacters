@@ -1,12 +1,12 @@
 package com.example.data.source
 
 
-import com.example.domain.entity.Character
 import com.example.domain.CharacterDataSource
+import com.example.domain.Either
+import com.example.domain.entity.Character
 import com.example.domain.entity.CharacterResp
 import com.example.domain.entity.Constant.ConnectionUtils.PUB_KEY
 import com.example.domain.entity.Constant.ConnectionUtils.PV_KEY
-import com.example.domain.Either
 import com.example.domain.failure.CharactersFailure
 import com.example.domain.failure.Failure
 import retrofit2.Response

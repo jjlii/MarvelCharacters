@@ -14,7 +14,6 @@ import com.example.marvelcharacters.R
 import com.example.marvelcharacters.getImage
 import kotlinx.android.synthetic.main.characters_item.view.*
 import java.text.SimpleDateFormat
-import java.util.*
 
 class CharactersListAdapter(private val clickListener: (Int)-> Unit): ListAdapter<Character, CharactersListAdapter.CharactersViewHolder>(DiffCallback()) {
 

@@ -37,6 +37,7 @@ class CharacterDetailsFragment : BaseFragment<CharacterDetailsViewModel>() {
 
     private fun initObservable(){
         viewModel.characterLD.observe(viewLifecycleOwner, characterObserver)
+        viewModel.failureLD.observe(viewLifecycleOwner, failureObserver)
     }
 
     private val characterObserver = Observer<Character?>{
@@ -60,6 +61,21 @@ class CharacterDetailsFragment : BaseFragment<CharacterDetailsViewModel>() {
     override fun onResume() {
         super.onResume()
         viewModel.getCharacterById(characterId)
+    }
+
+    private val failureObserver = Observer<Failure>{
+        when(it){
+            is Failure.ServerError ->
+                toast("ServerError with error code ${it.message}")
+            is Failure.Unknown ->{
+                toast("UnknownError")
+                Log.e("UnknownError", it.message)
+            }
+            is CharactersFailure.NotFound->
+                toast("Data not found")
+            is CharactersFailure.Unauthorized->
+                toast("Unauthorized")
+        }
     }
 
 }

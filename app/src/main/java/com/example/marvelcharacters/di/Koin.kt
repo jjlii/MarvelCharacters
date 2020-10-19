@@ -10,7 +10,6 @@ import com.example.marvelcharacters.ui.list_character.ListCharacterViewModel
 import com.example.usecase.GetAllCharacterUseCase
 import com.example.usecase.GetCharacterByIdUseCase
 import org.koin.android.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 object Koin{

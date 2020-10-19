@@ -5,14 +5,14 @@ import com.example.domain.entity.Character
 import com.example.domain.failure.Failure
 import com.example.marvelcharacters.ui.base.BaseViewModel
 import com.example.usecase.GetCharacterByIdUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CharacterDetailsViewModel(private val getCharacterByIdUseCase: GetCharacterByIdUseCase
 ): BaseViewModel() {
 
     val characterLD = MutableLiveData<Character?>()
+    val failureLD = MutableLiveData<Failure>()
+
 
     fun getCharacterById(characterId: Long){
         loadingLD.postValue(true)
