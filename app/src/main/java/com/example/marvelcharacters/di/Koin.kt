@@ -16,8 +16,8 @@ import org.koin.dsl.module
 object Koin{
 
     val appModule = module{
-        viewModel{(useCase: GetAllCharacterUseCase)-> ListCharacterViewModel(useCase)}
-        viewModel{ (useCase: GetCharacterByIdUseCase)->CharacterDetailsViewModel(useCase) }
+        viewModel{ListCharacterViewModel(get())}
+        viewModel{CharacterDetailsViewModel(get()) }
     }
 
     val dataModule = module{

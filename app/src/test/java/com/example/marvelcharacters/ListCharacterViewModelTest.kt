@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.example.domain.CharacterDataSource
 import com.example.domain.Either
 import com.example.domain.entity.Character
+import com.example.domain.failure.CharactersFailure
 import com.example.domain.failure.Failure
 import com.example.domain.test.mockedCharacter
 import com.example.marvelcharacters.ui.list_character.ListCharacterViewModel
@@ -54,7 +55,6 @@ class ListCharacterViewModelTest {
     @Before
     fun setUp() {
         listCharacterViewModel = ListCharacterViewModel(getAllCharacterUseCase)
-        stopKoin()
     }
 
     @Test
@@ -78,16 +78,16 @@ class ListCharacterViewModelTest {
     fun `when calls getAllCharacters should call getAllCharacterUseCase and notify observer with failure`() {
         runBlocking {
             val offset: Int = 0
-            val expResult = Failure.Unknown("")
+            val expResult = CharactersFailure.Unauthorized
 
-            whenever(getAllCharacterUseCase.invoke(offset)).thenReturn(Either.Failure(Failure.Unknown("")))
+            whenever(getAllCharacterUseCase.invoke(intCaptor.capture())).thenReturn(Either.Failure(CharactersFailure.Unauthorized))
             listCharacterViewModel.failureLD.observeForever(failureObserver)
             listCharacterViewModel.loadingLD.observeForever(loadingObserver)
             listCharacterViewModel.getAllCharacters(offset)
 
             verify(loadingObserver).onChanged(true)
-            //verify(failureObserver).onChanged(expResult)
-            //assertEquals(intCaptor.value, offset)
+            verify(failureObserver).onChanged(expResult)
+            assertEquals(intCaptor.value, offset)
         }
     }
 }
