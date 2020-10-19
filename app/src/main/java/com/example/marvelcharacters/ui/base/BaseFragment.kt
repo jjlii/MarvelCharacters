@@ -14,16 +14,17 @@ import androidx.lifecycle.Observer
 import com.example.domain.failure.CharactersFailure
 import com.example.domain.failure.Failure
 import com.example.marvelcharacters.R
-import org.koin.android.viewmodel.ext.android.viewModelByClass
 import kotlin.reflect.KClass
 
 abstract class BaseFragment<VM: BaseViewModel>: Fragment() {
 
-    protected val viewModel: VM by viewModelByClass(this.getViewModel())
+    //protected val viewModel: VM by viewModelByClass(this.getViewModel())
+
+    protected abstract val viewModel : VM
 
 
     abstract fun getLayout() : Int
-    abstract fun getViewModel() : KClass<VM>
+    //abstract fun getViewModel() : KClass<VM>
 
     private var progressDialog: AlertDialog? = null
 

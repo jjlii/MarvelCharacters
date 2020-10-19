@@ -9,7 +9,7 @@ buildscript {
     ext.navVersion = '2.3.0'
     ext.retrofitVersion = '2.7.2'
     ext.gsonVersion = '2.8.6'
-    ext.koinVersion = '1.0.2'
+    ext.koinVersion = '2.1.1'
     ext.glideVersion = '4.11.0'
     ext.recyclerviewVersion= '1.1.0'
 

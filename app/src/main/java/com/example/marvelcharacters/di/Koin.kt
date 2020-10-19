@@ -9,14 +9,15 @@ import com.example.marvelcharacters.ui.character_details.CharacterDetailsViewMod
 import com.example.marvelcharacters.ui.list_character.ListCharacterViewModel
 import com.example.usecase.GetAllCharacterUseCase
 import com.example.usecase.GetCharacterByIdUseCase
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
 object Koin{
 
     val appModule = module{
-        viewModel{ ListCharacterViewModel(get())}
-        viewModel { CharacterDetailsViewModel(get()) }
+        viewModel{(useCase: GetAllCharacterUseCase)-> ListCharacterViewModel(useCase)}
+        viewModel{ (useCase: GetCharacterByIdUseCase)->CharacterDetailsViewModel(useCase) }
     }
 
     val dataModule = module{
@@ -24,8 +25,8 @@ object Koin{
         single{ Network.initRetrofit("https://gateway.marvel.com/v1/public/").create(CharacterRetrofit::class.java) }
     }
 
-    val usecasesModule = module {
-        factory{ GetAllCharacterUseCase(get()) }
+    val useCaseModel = module {
+        factory { GetAllCharacterUseCase(get())  }
         factory { GetCharacterByIdUseCase(get()) }
     }
 }

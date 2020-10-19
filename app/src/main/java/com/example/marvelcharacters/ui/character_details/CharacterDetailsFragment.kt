@@ -14,12 +14,14 @@ import com.example.marvelcharacters.R
 import com.example.marvelcharacters.getImage
 import com.example.marvelcharacters.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_character_details.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class CharacterDetailsFragment : BaseFragment<CharacterDetailsViewModel>() {
 
     override fun getLayout() = R.layout.fragment_character_details
 
-    override fun getViewModel() = CharacterDetailsViewModel::class
+    override val viewModel: CharacterDetailsViewModel by viewModel(clazz = CharacterDetailsViewModel::class)
+
 
     private var characterId = 0L
 
@@ -59,4 +61,5 @@ class CharacterDetailsFragment : BaseFragment<CharacterDetailsViewModel>() {
         super.onResume()
         viewModel.getCharacterById(characterId)
     }
+
 }

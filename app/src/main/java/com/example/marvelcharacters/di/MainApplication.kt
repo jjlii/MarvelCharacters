@@ -1,17 +1,22 @@
 package com.example.marvelcharacters.di
 
 import android.app.Application
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.logger.AndroidLogger
+import org.koin.core.context.startKoin
 
 
 class MainApplication : Application(){
     override fun onCreate() {
         super.onCreate()
-        startKoin(this,
-        listOf(
-            Koin.appModule,
-            Koin.dataModule,
-            Koin.usecasesModule
-        ))
+        startKoin{
+            AndroidLogger()
+            androidContext(this@MainApplication)
+            listOf(
+                Koin.appModule,
+                Koin.dataModule,
+                Koin.useCaseModel
+            )
+        }
     }
 }
